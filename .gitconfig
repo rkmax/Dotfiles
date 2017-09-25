@@ -1,0 +1,17 @@
+[user]
+	email = julian.reyes.escrigas@gmail.com
+	name = Julian reyes Escrigas
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	quotepath = false
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	df = diff
+	br = branch
+[credential]
+	helper = cache --timeout 864000
+[http]
+	postBuffer = 209715200

@@ -1,0 +1,22 @@
+.idea/
+*.idea/
+*.iml
+*.well-known
+.dev-services
+
+# ASDF
+.tool-versions
+
+# Autoenv
+.autoenv
+
+# Python Virtualenv
+.virtualenv
+venv/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+infra/
