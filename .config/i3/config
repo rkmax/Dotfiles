@@ -26,6 +26,12 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# colors
+# colorclass 		border 	bg 	text 	indicator
+client.focused 		#850049 #853c00 #ffffff #ff0000
+client.unfocused	#523344 #523335 #ffffff #ff0000
+client.focused_inactive #786870 #786868 #ffffff #aa0000
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -42,7 +48,10 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term="i3-sensible-terminal"
+#bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term="i3-sensible-terminal"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term="i3-sensible-terminal" \
+  --dmenu='rofi -i -dmenu -font "snap 12" -bg "#222222" -fg "#888888" \
+  -hlbg "#285577" -hlfg "#ffffff" -opacity 90'
 
 # change focus
 bindsym $mod+j focus left
@@ -121,7 +130,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 ## Start up
 exec --no-startup-id /usr/bin/compton --config ~/.config/compton/compton.conf
 exec --no-startup-id feh --randomize --bg-fill /home/rkmax/Imágenes/Wallpapers
-exec --no-startup-id numlock on
+exec --no-startup-id numlockx on
 
 ## My binds
 
@@ -165,3 +174,16 @@ bar {
         status_command i3blocks
         tray_output primary
 }
+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym Shift+XF86AudioLowerVolume exec amixer -D pulse set Master 1%- && pkill -RTMIN+10 i3blocks
+bindsym Shift+XF86AudioRaiseVolume exec amixer -D pulse set Master 1%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -D pulse set Master toggle && pkill -RTMIN+10 i3blocks
+
+bindsym XF86MonBrightnessUp exec sudo /usr/local/bin/brightness +10
+bindsym XF86MonBrightnessDown exec sudo /usr/local/bin/brightness /2
+
+bindsym XF86AudioPlay exec mocp -G
+bindsym XF86AudioNext exec mocp -f
+bindsym XF86AudioPrev exec mocp -r
